@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p id="p1"></p>
+    <p id="p2"></p>
+    <p id="p3"></p>
+    <p id="p4"></p>
+    <p id="p5"></p>
+    <p id="p6"></p>
+    <p id="p7"></p>
+    <p id="p8"></p>
+    <p id="p9"></p>
+    <p id="p10"></p>
+    <p id="p11"></p>
+    <p id="p12"></p>
+    <p id="p13"></p>
+    <p id="p14"></p>
+    <p id="p15"></p>
+
+    <script>
+      const list = [1, 2, 3, 4];
+
+      /****** Copy with spread ***********/
+      const newList = [...list];
+      newList[2] = 200;
+
+      document.getElementById("p1").innerHTML = list;
+      document.getElementById("p2").innerHTML = newList;
+
+      const newList2 = [...newList, 10, 20, 30];
+      document.getElementById("p3").innerHTML = newList2;
+
+      const newList3 = [50, 60, 70, ...newList, 10, 20, 30];
+      document.getElementById("p4").innerHTML = newList3;
+
+      const oldPerson = {
+        firstName: "Hamid",
+        lastName: "Matin",
+      };
+
+      const newPerson = { ...oldPerson };
+      newPerson.firstName = "Amin";
+
+      document.getElementById("p5").innerHTML = oldPerson.firstName;
+      document.getElementById("p6").innerHTML = newPerson.firstName;
+      
+      const newPersonWithAge = {
+          ...oldPerson,
+          age: 45,
+        };
+        document.getElementById("p7").innerHTML = newPersonWithAge.age;
+
+
+        const sum = function(list){
+            let sum = 0;
+            // for(let i = 0; i < list.length; i++){
+            //     const item = list[i];
+            //
+            // }
+
+            for(const item of list){
+                sum += item;
+            }
+            return sum;
+        }
+
+
+        const sumWithRest = function(a, ...list){
+            let sum = 0;
+            for(const item of list){
+                sum += item;
+            }
+            return sum;
+        }
+        const scores = [10,50,60,30];
+        document.getElementById('p8').innerHTML = sum(scores)
+        document.getElementById('p9').innerHTML = sumWithRest(10,50,60,30);
+
+
+        const personList = [oldPerson, newPerson, newPersonWithAge];
+
+        for( const p of personList){
+            document.getElementById('p10').innerHTML += p.firstName + '<br>';
+        }
+
+        document.getElementById('p11').innerHTML = oldPerson.firstName;
+        document.getElementById('p12').innerHTML = oldPerson['firstName'];
+
+        for(const property in oldPerson){
+            document.getElementById('p13').innerHTML += 'person[' + property + '] = ' + oldPerson[property] + '<br>';
+        }
+    </script>
+  </body>
+</html>
