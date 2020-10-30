@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <p id="p1"></p>
     <p id="p2"></p>
     <p id="p3"></p>
@@ -18,7 +18,96 @@
     <p id="p10"></p>
 
     <script>
+      class Student {
+        constructor(firstName, lastName) {
+          this.firstName = firstName;
+          this.lastName = lastName;
+        }
+        fullName() {
+          return this.firstName + " " + this.lastName;
+        }
+      }
 
+      const st1 = new Student("Nioo", "Yeganeh");
+      document.getElementById("p1").innerHTML = st1.fullName();
+
+      class Car {
+        constructor(props) {
+          this.name = props.name;
+          this.year = props.year;
+        }
+        age() {
+          let date = new Date();
+          return date.getFullYear() - this.year;
+        }
+      }
+
+      const myCar = new Car({
+        name: "Ford",
+        year: 2014,
+      });
+
+      document.getElementById("p2").innerHTML =
+        "My car is " + myCar.age() + " years old.";
+
+      class Person {
+        constructor(firstName, lastName, nationalCode) {
+          this.firstName = firstName;
+          this.lastName = lastName;
+          this.nationalCode = nationalCode;
+        }
+
+        fullName() {
+          return this.firstName + " " + this.lastName;
+        }
+      }
+
+      class Employee extends Person {
+        constructor(firstName, lastName, nationalCode, address) {
+          super(firstName, lastName, nationalCode);
+          this.address = address;
+        }
+        getAddress() {
+          return this.address;
+        }
+      }
+
+      class Teacher extends Person {
+        constructor(firstName, lastName, nationalCode, email) {
+          super(firstName, lastName, nationalCode);
+          if(!email)
+            email = 'no@email.com';
+          this._email = email;
+        }
+        get email() {
+          return this._email;
+        }
+        set email(value){
+            if(!value || value == ''){
+                value = 'no@email.com';
+            }
+            this._email = value;
+        }
+      }
+
+      const t1 = new Teacher(
+        "Hamid",
+        "Matin"
+      );
+      const emp1 = new Employee(
+        "Sharad",
+        "Gholizadeh",
+        "456546546",
+        "kvdh lkdhf d fajd fkda "
+      );
+
+      document.getElementById('p3').innerHTML = t1.fullName();
+      document.getElementById('p4').innerHTML = t1.email;
+      t1.email = 'hamid.matin@gmail.com';
+      document.getElementById('p5').innerHTML = t1.email;
+      
+      document.getElementById('p6').innerHTML = emp1.fullName();
+      document.getElementById('p7').innerHTML = emp1.getAddress();
     </script>
-</body>
+  </body>
 </html>
