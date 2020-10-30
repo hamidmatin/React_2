@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p id="p1"></p>
+    <p id="p2"></p>
+    <p id="p3"></p>
+    <p id="p4"></p>
+    <p id="p5"></p>
+
+    <script>
+      function sum1(num1, num2) {
+        return num1 + num2;
+      }
+
+      document.getElementById("p1").innerHTML = sum1(5, 6);
+
+      const sum2 = function (num1, num2) {
+        return num1 + num2;
+      };
+      document.getElementById("p2").innerHTML = sum2(5, 6);
+
+      const sum3 = (num1, num2) => {
+        return num1 + num2;
+      };
+      document.getElementById("p3").innerHTML = sum3(5, 6);
+
+      const sum4 = (num1, num2) => num1 + num2;
+      document.getElementById("p4").innerHTML = sum4(5, 6);
+
+    //   const wrapBold = value => '<b>' + value + '</b>';
+      const wrapBold = value => `<b>${value}</b>`;
+      document.getElementById("p5").innerHTML = wrapBold(sum4(5, 6));
+
+      const person = {
+          firstName: 'Hamid',
+          method1: function(){
+              console.log(this)
+          },
+          method2: ()=>{
+              console.log(this)
+              console.log(person.firstName);
+          }
+      }
+
+      person.method1();
+      person.method2();
+    </script>
+  </body>
+</html>

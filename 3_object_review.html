@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p id="p1"></p>
+    <p id="p2"></p>
+    <p id="p3"></p>
+    <p id="p4"></p>
+    <p id="p5"></p>
+    <p id="p6"></p>
+    <p id="p7"></p>
+    <p id="p8"></p>
+    <p id="p9"></p>
+    <p id="p10"></p>
+
+    <script>
+      const person = {
+        firstName: "Hamid",
+        lastName: "Matin",
+        fullName: function () {
+          return `${this.firstName} ${this.lastName}`;
+        },
+      };
+
+      const students = [
+        {
+          firstName: "Hamid",
+          lastName: "Matin",
+          fullName: function () {
+            return `${this.firstName} ${this.lastName}`;
+          },
+        },
+        {
+          firstName: "Baharak",
+          lastName: "Asefi",
+          fullName: function () {
+            return `${this.firstName} ${this.lastName}`;
+          },
+        },
+        {
+          firstName: "Mojtaba",
+          lastName: "Khodakhah",
+          fullName: function () {
+            return `${this.firstName} ${this.lastName}`;
+          },
+        },
+      ];
+
+      document.getElementById("p1").innerHTML = person.fullName();
+
+      person.age = 46;
+      document.getElementById("p2").innerHTML = person.age;
+
+      /* Object Constructor Function*/
+      const Student = function (firstName, lname) {
+        this.firstName = firstName;
+        this.lastName = lname;
+        this.fullName = function () {
+          return `${this.firstName} ${this.lastName}`;
+        };
+      };
+
+      const st1 = new Student('Hadi', 'Alizadeh');
+      document.getElementById("p3").innerHTML = st1.fullName();
+
+      const people = [
+          new Student('Parisa', 'Parsa'),
+          new Student('Milad', 'Saremi')
+      ]
+
+      document.getElementById("p4").innerHTML = people[0].fullName();
+      document.getElementById("p5").innerHTML = people[1].fullName();
+    </script>
+  </body>
+</html>
