@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .row {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+      }
+      .form-wrapper {
+        width: 800px;
+        border: 1px solid #eeeeee;
+        box-shadow: 0 2px 4px #cccccc;
+        margin: 50px auto;
+        padding: 10px;
+      }
+      .label-wrapper {
+        width: 20%;
+        padding: 10px 0;
+      }
+      .control-wrapper {
+        width: 80%;
+        padding: 10px 0;
+      }
+      input {
+        display: block;
+        width: 100%;
+      }
+
+      .table {
+        width: 800px;
+        margin: auto;
+      }
+      .first-name {
+        width: 40%;
+      }
+      .last-name {
+        width: 50%;
+      }
+      .mark {
+        width: 10%;
+      }
+      .first-name,
+      .last-name,
+      .mark {
+        padding: 15px;
+        margin-left: 5px;
+      }
+      .title {
+        text-align: center;
+        background-color: rgb(121, 121, 121);
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-wrapper">
+      <div class="row">
+        <div class="label-wrapper">
+          <label for="fname">First Name</label>
+        </div>
+        <div class="control-wrapper">
+          <input type="text" id="fname" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="label-wrapper">
+          <label for="lname">Last Name</label>
+        </div>
+        <div class="control-wrapper">
+          <input type="text" id="lname" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="label-wrapper">
+          <label for="lname">Mark</label>
+        </div>
+        <div class="control-wrapper">
+          <input type="text" id="mark" />
+        </div>
+      </div>
+      <div class="row">
+        <button id="add" onclick="add()">Add</button>
+      </div>
+    </div>
+
+    <div class="table">
+      <div class="row">
+        <div class="first-name title">First Name</div>
+        <div class="last-name title">Last Name</div>
+        <div class="mark title">Mark</div>
+      </div>
+      <div id="table-body"></div>
+    </div>
+
+    <script>
+      var studentList = [];
+
+      var Student = function (firstName, lastName, mark) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.mark = mark;
+      };
+
+        var firstNameElement = document.getElementById('fname');
+        var lastNameElement = document.getElementById('lname');
+        var markElement = document.getElementById('mark');
+        
+      var add = function () {
+        /**
+        *
+        * Validation
+        *
+        */
+
+
+
+        var student = new Student(
+          firstNameElement.value,
+          lastNameElement.value,
+          parseFloat(markElement.value)
+        );
+
+        studentList.push(student);
+
+        var row = `<div class="row">
+                    <div class="first-name">${student.firstName}</div>
+                    <div class="last-name">${student.lastName}</div>
+                    <div class="mark">${student.mark}</div>
+                   </div>`;
+
+        document.getElementById('table-body').innerHTML += row;
+
+        firstNameElement.value = '';
+        lastNameElement.value = '';
+        markElement.value = '';
+
+        firstNameElement.focus();
+      };
+    </script>
+  </body>
+</html>
