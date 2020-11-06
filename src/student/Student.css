@@ -1,0 +1,21 @@
+.card{
+    border: 1px solid #f1f1f1;
+    box-shadow: 0 2px 4px #cccccc;
+    padding: 1em;
+    width: 300px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+.lable{
+    display: inline-block;
+    width: 100px;
+    color: crimson;
+    padding: .5em;
+}
+.data{
+    display: inline-block;
+    font-weight: 900;
+    width: 160px;
+    background-color: #f1f1f1;
+    padding: .5em;
+}
