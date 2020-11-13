@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import Student from "./student/Student";
+import React, { Component } from 'react';
+import Student from './student/Student';
 import './Students.css';
 
 export default class Students extends Component {
@@ -8,83 +8,76 @@ export default class Students extends Component {
     this.state = {
       students: [
         {
-          firstName: "Amin",
-          lastName: "Mohammadi",
+          id: 1,
+          firstName: 'Amin',
+          lastName: 'Mohammadi',
         },
         {
-          firstName: "Baharak",
-          lastName: "Asefi",
+          id: 2,
+          firstName: 'Baharak',
+          lastName: 'Asefi',
         },
         {
-          firstName: "Hesam",
-          lastName: "Azadi",
+          id: 3,
+          firstName: 'Hesam',
+          lastName: 'Azadi',
         },
         {
-          firstName: "Shahrad",
-          lastName: "Gholizadeh",
+          id: 4,
+          firstName: 'Shahrad',
+          lastName: 'Gholizadeh',
         },
         {
-          firstName: "Mojtaba",
-          lastName: "Khodakhah",
+          id: 5,
+          firstName: 'Mojtaba',
+          lastName: 'Khodakhah',
         },
         {
-          firstName: "Milad",
-          lastName: "Saremi",
+          id: 6,
+          firstName: 'Milad',
+          lastName: 'Saremi',
         },
         {
-          firstName: "Hadi",
-          lastName: "Alizadeh",
+          id: 7,
+          firstName: 'Hadi',
+          lastName: 'Alizadeh',
         },
         {
-          firstName: "Parisa",
-          lastName: "Parsa",
+          id: 8,
+          firstName: 'Parisa',
+          lastName: 'Parsa',
         },
       ],
     };
   }
+  deleteStudent = (stdID) => {
+    console.log(stdID);
+    const students = [...this.state.students];
+
+    const newStudents = students.filter((student) => {
+      return student.id !== stdID;
+    });
+
+    console.log(newStudents);
+
+    this.setState({ students: newStudents });
+  };
   render() {
     return (
       <div>
-        <div className="student-list">
-          <Student
-            firstName={this.state.students[0].firstName}
-            lastName={this.state.students[0].lastName}
-          />
-
-          <Student
-            firstName={this.state.students[1].firstName}
-            lastName={this.state.students[1].lastName}
-          />
-
-          <Student
-            firstName={this.state.students[2].firstName}
-            lastName={this.state.students[2].lastName}
-          />
-
-          <Student
-            firstName={this.state.students[3].firstName}
-            lastName={this.state.students[3].lastName}
-          />
-
-          <Student
-            firstName={this.state.students[4].firstName}
-            lastName={this.state.students[4].lastName}
-          />
-
-          <Student
-            firstName={this.state.students[5].firstName}
-            lastName={this.state.students[5].lastName}
-          />
-
-          <Student
-            firstName={this.state.students[6].firstName}
-            lastName={this.state.students[6].lastName}
-          />
-
-          <Student
-            firstName={this.state.students[7].firstName}
-            lastName={this.state.students[7].lastName}
-          />
+        <div className='student-list'>
+          {this.state.students.map((student) => {
+            console.log(student);
+            return (
+              <Student
+                key={student.id}
+                id={student.id}
+                firstName={student.firstName}
+                lastName={student.lastName}
+                deleteStudentHandler={this.deleteStudent}
+              />
+            );
+          })}
         </div>
       </div>
     );

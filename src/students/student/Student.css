@@ -5,6 +5,7 @@
     width: 300px;
     margin-right: 20px;
     margin-bottom: 20px;
+    position: relative;
 }
 .lable{
     display: inline-block;
@@ -18,4 +19,18 @@
     width: 160px;
     background-color: #f1f1f1;
     padding: .5em;
+}
+.delete{
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    border: none;
+    background-color: transparent;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: .2s;
+}
+.delete:hover{
+    background-color: #f1f1f1;
 }
