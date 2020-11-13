@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Students from './students/Students';
+import Lifecycle from './lifecycle/Lifecycle';
 import './App.css';
 
 class App extends Component {
@@ -12,6 +13,7 @@ class App extends Component {
       <div className='container'>
         <h1>Hello React</h1>
         <p>React course in MFT</p>
+        <Lifecycle />
         <hr/>
         <Students/>
       </div>
