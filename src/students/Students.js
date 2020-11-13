@@ -66,18 +66,22 @@ export default class Students extends Component {
     return (
       <div>
         <div className='student-list'>
-          {this.state.students.map((student) => {
-            console.log(student);
-            return (
-              <Student
-                key={student.id}
-                id={student.id}
-                firstName={student.firstName}
-                lastName={student.lastName}
-                deleteStudentHandler={this.deleteStudent}
-              />
-            );
-          })}
+          {this.state.students.length > 0 ? (
+            this.state.students.map((student) => {
+              console.log(student);
+              return (
+                <Student
+                  key={student.id}
+                  id={student.id}
+                  firstName={student.firstName}
+                  lastName={student.lastName}
+                  deleteStudentHandler={this.deleteStudent}
+                />
+              );
+            })
+          ) : (
+            <p className='list-empty'>Student list is empty.</p>
+          )}
         </div>
       </div>
     );
