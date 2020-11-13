@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Student from './student/Student';
+import StudentForm from './student/StudentForm';
+
 import './Students.css';
 
 export default class Students extends Component {
@@ -62,27 +64,35 @@ export default class Students extends Component {
 
     this.setState({ students: newStudents });
   };
+
+  addStudent = (student) => {
+    const students = [...this.state.students];
+    students.push(student);
+    this.setState({ students: students });
+  }
+
   render() {
+    let studentList = <p className='list-empty'>Student list is empty.</p>;
+
+    if (this.state.students.length > 0) {
+      studentList = this.state.students.map((student) => {
+        console.log(student);
+        return (
+          <Student
+            key={student.id}
+            id={student.id}
+            firstName={student.firstName}
+            lastName={student.lastName}
+            deleteStudentHandler={this.deleteStudent}
+          />
+        );
+      });
+    }
     return (
       <div>
-        <div className='student-list'>
-          {this.state.students.length > 0 ? (
-            this.state.students.map((student) => {
-              console.log(student);
-              return (
-                <Student
-                  key={student.id}
-                  id={student.id}
-                  firstName={student.firstName}
-                  lastName={student.lastName}
-                  deleteStudentHandler={this.deleteStudent}
-                />
-              );
-            })
-          ) : (
-            <p className='list-empty'>Student list is empty.</p>
-          )}
-        </div>
+        <StudentForm addStudentHandler={this.addStudent}/>
+        <hr/>
+        <div className='student-list'>{studentList}</div>
       </div>
     );
   }
