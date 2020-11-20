@@ -50,6 +50,11 @@ export default class Students extends Component {
           lastName: 'Parsa',
         },
       ],
+      studentForm: {
+        id: 0,
+        firstName: '',
+        lastName: '',
+      },
     };
   }
   deleteStudent = (stdID) => {
@@ -69,7 +74,17 @@ export default class Students extends Component {
     const students = [...this.state.students];
     students.push(student);
     this.setState({ students: students });
-  }
+  };
+
+  editStudent = (stdID) => {
+    console.log(stdID);
+
+    const student = this.state.students.find((student) => student.id === stdID);
+
+    console.log(student);
+
+    this.setState({studentForm: student});
+  };
 
   render() {
     let studentList = <p className='list-empty'>Student list is empty.</p>;
@@ -84,14 +99,15 @@ export default class Students extends Component {
             firstName={student.firstName}
             lastName={student.lastName}
             deleteStudentHandler={this.deleteStudent}
+            editStudentHandler={this.editStudent}
           />
         );
       });
     }
     return (
       <div>
-        <StudentForm addStudentHandler={this.addStudent}/>
-        <hr/>
+        <StudentForm student={this.state.studentForm} addStudentHandler={this.addStudent} />
+        <hr />
         <div className='student-list'>{studentList}</div>
       </div>
     );

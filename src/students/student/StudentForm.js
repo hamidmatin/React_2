@@ -2,17 +2,36 @@ import React, { Component } from 'react';
 import './StudentForm.css';
 
 export default class StudentForm extends Component {
-  constructor() {
-    super();
-    const initialState = {
-      id: 0,
-      firstName: '',
-      lastName: '',
-    };
+  constructor(props) {
+    super(props);
+    // const initialState = {
+    //   id: 0,
+    //   firstName: '',
+    //   lastName: '',
+    // };
+    console.log('StudentForm', this.props.student);
     this.state = {
-      student: initialState,
+      student: this.props.student,
     };
+    this.isUpdating = false;
   }
+
+  componentDidUpdate() {
+    if (!this.isUpdating) {
+      console.log('StudentForm-componentDidUpdate', this.props.student);
+      this.isUpdating = true;
+      this.setState({
+        student: this.props.student,
+      });
+    }
+    else
+    this.isUpdating = false;
+  }
+
+  // shouldComponentUpdate(prevProps, prevState){
+  //   console.log(prevProps.updated );
+  //   return true;
+  // }
 
   changeIdHandler = (e) => {
     const student = { ...this.state.student };
@@ -23,6 +42,7 @@ export default class StudentForm extends Component {
 
   changeFirstNameHandler = (e) => {
     console.log(e.target.value);
+    
     const student = { ...this.state.student };
     student.firstName = e.target.value;
 

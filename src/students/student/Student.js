@@ -22,6 +22,7 @@ export default class Student extends Component {
         >
           &times;
         </button>
+        <button onClick={()=>{this.props.editStudentHandler(this.props.id)}}>Edit</button>
       </div>
     );
   }
