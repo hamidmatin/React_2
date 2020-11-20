@@ -13,7 +13,7 @@ class App extends Component {
       <div className='container'>
         <h1>Hello React</h1>
         <p>React course in MFT</p>
-        <Lifecycle />
+        <Lifecycle content='Life Cycle Component'/>
         <hr/>
         <Students/>
       </div>
