@@ -54,6 +54,7 @@ export default class Students extends Component {
         id: 0,
         firstName: '',
         lastName: '',
+        isNew: true
       },
     };
   }
@@ -72,7 +73,18 @@ export default class Students extends Component {
 
   addStudent = (student) => {
     const students = [...this.state.students];
-    students.push(student);
+    
+    const  {id, firstName, lastName} = student;
+    const newStudent = {id, firstName, lastName};
+    
+    if(student.isNew){
+      students.push(newStudent);
+    }
+    else{
+      const index = students.findIndex((st)=>st.id === newStudent.id);
+      students[index] = newStudent;
+    }
+
     this.setState({ students: students });
   };
 
@@ -83,7 +95,7 @@ export default class Students extends Component {
 
     console.log(student);
 
-    this.setState({studentForm: student});
+    this.setState({studentForm: {...student, isNew: false}});
   };
 
   render() {

@@ -12,24 +12,22 @@ export default class StudentForm extends Component {
     console.log('StudentForm', this.props.student);
     this.state = {
       student: this.props.student,
+      isUpdating: false,
     };
-    this.isUpdating = false;
   }
 
   componentDidUpdate() {
-    if (!this.isUpdating) {
-      console.log('StudentForm-componentDidUpdate', this.props.student);
-      this.isUpdating = true;
+    if (!this.state.isUpdating && !this.props.student.isNew) {
       this.setState({
         student: this.props.student,
+        isUpdating: !this.state.isUpdating,
       });
     }
-    else
-    this.isUpdating = false;
   }
 
   // shouldComponentUpdate(prevProps, prevState){
-  //   console.log(prevProps.updated );
+  //   console.table(prevProps);
+  //   console.table(this.props);
   //   return true;
   // }
 
@@ -42,7 +40,7 @@ export default class StudentForm extends Component {
 
   changeFirstNameHandler = (e) => {
     console.log(e.target.value);
-    
+
     const student = { ...this.state.student };
     student.firstName = e.target.value;
 
@@ -76,6 +74,7 @@ export default class StudentForm extends Component {
               placeholder='Enter Student Id'
               value={this.state.student.id}
               onChange={this.changeIdHandler}
+              disabled={this.state.isUpdating}
             />
           </div>
           <div>
@@ -102,7 +101,7 @@ export default class StudentForm extends Component {
           </div>
           <div className='button-wapper'>
             <button className='add-student' type='submit'>
-              Add Student
+              {this.props.student.isNew ? 'Add Student' : 'Update Student'}
             </button>
           </div>
         </form>
