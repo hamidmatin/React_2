@@ -4,6 +4,8 @@ import './App.css';
 import About from './about/About';
 import Dashboard from './dashboard/Dashboard';
 import Home from './home/Home';
+import Students from './students/Students';
+import Blog from './blog/Blog'
 
 class App extends Component {
   render() {
@@ -18,6 +20,12 @@ class App extends Component {
           </Link>
           <Link className='nav-link' to='/about'>
             About
+          </Link>
+          <Link className='nav-link' to='/students'>
+            Students
+          </Link>
+          <Link className='nav-link' to='/blog'>
+            Blog
           </Link>
 
           <Switch>
@@ -36,6 +44,9 @@ class App extends Component {
             <Route path='/dashboard' component={Dashboard} />
 
             <Route path='/about' component={About} />
+
+            <Route path='/students' component={Students} />
+            <Route path='/blog' component={Blog} />
           </Switch>
         </div>
       </BrowserRouter>
