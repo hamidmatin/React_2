@@ -6,12 +6,13 @@ import Users from './users/Users';
 import Posts from './posts/Posts';
 
 import './Blog.css';
+import User from './users/user/User';
 
 export default class Blog extends Component {
     render() {
         return (
-            <div className='blog-container'>
-                <div className="side-navbar">
+            <div className='blog'>
+                <div className="aside-navbar">
                     <NavLink to='/blog' exact>Home</NavLink>
                     <NavLink to='/blog/users'>Users</NavLink>
                     <NavLink to='/blog/posts'>Possts</NavLink>
@@ -20,6 +21,7 @@ export default class Blog extends Component {
                     <Route path='/blog' component={Home} exact/>
                     <Route path='/blog/users' component={Users} exact/>
                     <Route path='/blog/posts' component={Posts} exact/>
+                    <Route path='/blog/users/:id' component={User} exact/>
                 </div>
             </div>
         )

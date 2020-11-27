@@ -1,3 +1,26 @@
 .active{
     color: red;
 }
+
+
+.blog{
+    display: flex;
+}
+.blog .aside-navbar{
+    flex-basis: 20%;
+    padding: 16px;
+}
+.blog .aside-navbar a{
+    display: block;
+    text-decoration: none;
+    padding: 8px 16px;
+    color: black;
+}
+.blog .aside-navbar a:hover,
+.blog .aside-navbar a.active{
+    background-color: #f1f1f1;
+}
+
+.blog .blog-content{
+    flex-basis: 80%;
+}
