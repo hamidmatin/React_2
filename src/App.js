@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Link, Route, Switch, NavLink } from 'react-router-dom';
 import './App.css';
 import About from './about/About';
 import Dashboard from './dashboard/Dashboard';
@@ -12,21 +12,21 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div className='container'>
-          <Link className='nav-link' to='/'>
+          <NavLink className='nav-link' to='/' exact>
             Home
-          </Link>
-          <Link className='nav-link' to='/dashboard'>
+          </NavLink>
+          <NavLink className='nav-link' to='/dashboard'>
             Dashboard
-          </Link>
-          <Link className='nav-link' to='/about'>
+          </NavLink>
+          <NavLink className='nav-link' to='/about'>
             About
-          </Link>
-          <Link className='nav-link' to='/students'>
+          </NavLink>
+          <NavLink className='nav-link' to='/students'>
             Students
-          </Link>
-          <Link className='nav-link' to='/blog'>
+          </NavLink>
+          <NavLink className='nav-link' to='/blog'>
             Blog
-          </Link>
+          </NavLink>
 
           <Switch>
             {/* <Route path='/' exact >
