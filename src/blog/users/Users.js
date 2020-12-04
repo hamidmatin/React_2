@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import User from './user/User';
+import './Users.css';
+
 export default class Users extends Component {
   constructor(props) {
     super(props);
@@ -24,12 +26,17 @@ export default class Users extends Component {
   }
   render() {
     return (
-      <div>
+      <div className='row p-3'>
         {this.state.users !== null ? (
-          this.state.users.map((user) => 
-          
-            <User key={user.id} name={user.name} />
-        )
+          this.state.users.map((user) => (
+            <User
+              key={user.id}
+              id={user.id}
+              name={user.name}
+              username={user.username}
+              email={user.email}
+            />
+          ))
         ) : (
           <p>Loading Users</p>
         )}
