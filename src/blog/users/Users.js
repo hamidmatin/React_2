@@ -6,21 +6,14 @@ import User from './user/User';
 
 export default function Users() {
   const [users, setUsers] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [usersLoaded, setUsersLoaded] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (!usersLoaded) {
-      setIsLoading(true);
-      axios
-        .get('https://jsonplaceholder.typicode.com/users')
-        .then((response) => {
-          setUsers(response.data);
-          setIsLoading(false);
-          setUsersLoaded(true);
-        });
-    }
-  });
+    axios.get('https://jsonplaceholder.typicode.com/users').then((response) => {
+      setUsers(response.data);
+      setIsLoading(false);
+    });
+  }, []);
 
   return (
     <div className='container'>
@@ -33,11 +26,16 @@ export default function Users() {
           {users.map((user) => (
             <User
               key={user.id}
-            //   name={user.name}
-            //   username={user.username}
-            //   email={user.email}
-            //   allUsers={users}
-              properties={user.id, user.name, user.username, user.email}
+                name={user.name}
+                username={user.username}
+                email={user.email}
+                allUsers={users}
+              // properties={{
+              //   id: user.id,
+              //   name: user.name,
+              //   username: user.username,
+              //   email: user.email,
+              // }}
             />
           ))}
         </div>
