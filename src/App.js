@@ -7,8 +7,16 @@ import About from './about/About'
 import Blog from './blog/Blog';
 import Login from './login/Login';
 import HOC from './hoc/HOC';
+import WidthLoading from './hoc/WithLoading';
 
 export default function App() {
+  const AboutWidthLoading = WidthLoading(About);
+
+  const [isLoadingAbout, setIsLoadingAbout] = useState(true);
+  setTimeout(()=>{
+    setIsLoadingAbout(false)
+  }, 5000)
+
   const [loggedIn, setLoggedIn] = useState(false);
 
   const doLogin = ()=>{
@@ -27,7 +35,9 @@ export default function App() {
         </Route>
         <Route path='/home' component={Home}/>
         <Route path='/hoc' component={HOC}/>
-        <Route path='/about' component={About}/>
+        <Route path='/about'>
+          <AboutWidthLoading isLoading={isLoadingAbout}/>
+        </Route>
         <Route path='/blog' >
           {loggedIn? <Blog/>: <Login onLogin={doLogin}/>}
         </Route>
