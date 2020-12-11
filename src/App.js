@@ -6,6 +6,7 @@ import Home from './home/Home'
 import About from './about/About'
 import Blog from './blog/Blog';
 import Login from './login/Login';
+import HOC from './hoc/HOC';
 
 export default function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -25,6 +26,7 @@ export default function App() {
           <Redirect to='/home' />
         </Route>
         <Route path='/home' component={Home}/>
+        <Route path='/hoc' component={HOC}/>
         <Route path='/about' component={About}/>
         <Route path='/blog' >
           {loggedIn? <Blog/>: <Login onLogin={doLogin}/>}

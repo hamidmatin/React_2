@@ -13,6 +13,9 @@ export default function Navbar(props) {
             <NavLink to='/about'>About</NavLink>
           </li>
           <li>
+            <NavLink to='/hoc'>HOC</NavLink>
+          </li>
+          <li>
             <NavLink to='/blog'>Blog</NavLink>
           </li>
           <li>
