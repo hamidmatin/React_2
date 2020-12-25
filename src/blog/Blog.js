@@ -11,10 +11,10 @@ export default function Blog() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    axios.get('https://jsonplaceholder.typicode.com/users').then((response) => {
-      setUsers(response.data);
-      setIsLoading(false)
-    });
+    // axios.get('https://jsonplaceholder.typicode.com/users').then((response) => {
+    //   setUsers(response.data);
+    // });
+    setIsLoading(false)
   }, []);
-  return <UsersWidthLoading users={users} isLoading={isLoading} />;
+  return <UsersWidthLoading isLoading={isLoading} />;
 }
