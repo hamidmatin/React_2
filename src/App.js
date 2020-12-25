@@ -4,7 +4,7 @@ import {Route, BrowserRouter, Switch, Redirect} from 'react-router-dom'
 import NavBar from './navbar/Navbar';
 import Home from './home/Home'
 import About from './about/About'
-import Blog from './blog/Blog';
+import Blog from './blog_class_base/Blog';
 import Login from './login/Login';
 import HOC from './hoc/HOC';
 import WidthLoading from './hoc/WithLoading';
