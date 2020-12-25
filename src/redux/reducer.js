@@ -1,3 +1,6 @@
+import axios from 'axios';
+import { ADD_USER, LOAD_All_USERS } from './actionTypes';
+
 const initState = {
   users: [
     {
@@ -50,22 +53,61 @@ const initState = {
 
   posts: [
     {
-        "userId": 1,
-        "id": 1,
-        "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-        "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
-      },
-      {
-        "userId": 1,
-        "id": 2,
-        "title": "qui est esse",
-        "body": "est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla"
-      },
-  ]
+      userId: 1,
+      id: 1,
+      title:
+        'sunt aut facere repellat provident occaecati excepturi optio reprehenderit',
+      body:
+        'quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto',
+    },
+    {
+      userId: 1,
+      id: 2,
+      title: 'qui est esse',
+      body:
+        'est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla',
+    },
+  ],
 };
 
 const rootReducer = (state = initState, action) => {
-  return state;
+  console.log(action);
+  //   if (action.type === LOAD_All_USERS) {
+  //     const newState = { ...state };
+  //     axios.get('https://jsonplaceholder.typicode.com/users').then((response) => {
+  //       newState.users = response.data;
+  //     });
+  //     console.log('NewState', newState);
+  //     return newState;
+  //   }
+  //   if (action.type === ADD_USER) {
+  //     const newState = { ...state };
+  //     newState.users = [...newState.users, action.value];
+  //     return newState;
+  //   }
+  //   return state;
+
+  switch (action.type) {
+    case LOAD_All_USERS:
+      const newState = { ...state };
+      axios
+        .get('https://jsonplaceholder.typicode.com/users')
+        .then((response) => {
+          newState.users = response.data;
+        });
+      console.log('NewState', newState);
+      return newState;
+
+    case ADD_USER:
+    //   const newState = { ...state };
+    //   newState.users = [...newState.users, action.value];
+      return {
+          posts: [...state.posts],
+          users: [...state.users, action.value]
+      };
+    default:
+      return state;
+  }
 };
 
 export default rootReducer;
