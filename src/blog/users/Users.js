@@ -9,7 +9,7 @@ export default function Users(props) {
 
   const dispatch = useDispatch();
 
-  const loadAll = () => {
+  const loadAll = async () => {
     dispatch(loadAllUsers());
   };
   const addNewUser = () => {
