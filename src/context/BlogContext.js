@@ -68,6 +68,8 @@ const initState = {
           'est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla',
       },
     ],
+
+    isloading: true
   };
 
 export const BlogContext = createContext();

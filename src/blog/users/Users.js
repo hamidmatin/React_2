@@ -14,6 +14,7 @@ export default function Users(props) {
   const loadAll = () => {
     console.log('loadAll')
     dispatch(loadAllUsers());
+    
   };
   const addNewUser = () => {
     dispatch(
