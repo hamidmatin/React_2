@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
+
+import { BlogContext } from '../../context/BlogContext';
+import { loadAllUsers, addUser } from '../../context/actions'
 import User from './user/User';
-import { useSelector, useDispatch } from 'react-redux';
-import { loadAllUsers, addUser } from '../../redux/actions';
 
 export default function Users(props) {
-  const users = useSelector((state) => state.users);
-  const posts = useSelector((state) => state.posts);
+ 
+  const { blogState, dispatch } = useContext(BlogContext);
 
-  const dispatch = useDispatch();
+  // console.log(blogState)
+  const users = blogState.users;
 
-  const loadAll = async () => {
+  const loadAll = () => {
+    console.log('loadAll')
     dispatch(loadAllUsers());
   };
   const addNewUser = () => {
@@ -39,6 +42,7 @@ export default function Users(props) {
       })
     );
   };
+  
   return (
     <div className='container'>
       {users.length === 0 ? (
